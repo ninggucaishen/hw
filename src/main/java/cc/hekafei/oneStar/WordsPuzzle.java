@@ -1,4 +1,4 @@
-package cc.hekafei;
+package cc.hekafei.oneStar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,19 +9,29 @@ public class WordsPuzzle {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String[] question = in.nextLine().split(",");
+        //谜面
+        String[] riddle = in.nextLine().split(",");
+        //谜底
         String[] answer = in.nextLine().split(",");
 
         List<String> resList = new ArrayList<>();
-        for (int i = 0; i < question.length; i++) {
-            String q = question[i];
+
+        //遍历谜面
+        for (int i = 0; i < riddle.length; i++) {
+            String r = riddle[i];
+
             boolean isFound = false;
+
+            //遍历谜底
             for (int j = 0; j < answer.length; j++) {
                 String a = answer[j];
-                if (change(q, a)) {
+
+                //变换顺序
+                if (change(r, a)) {
                     resList.add(a);
                     isFound = true;
-                } else if (dist(q, a)) {
+                    //去重
+                } else if (dist(r, a)) {
                     resList.add(a);
                     isFound = true;
                 }
@@ -30,6 +40,7 @@ public class WordsPuzzle {
                 resList.add("not found");
             }
         }
+
         String res = "";
         for (int i = 0; i < resList.size(); i++) {
             res += resList.get(i) + ",";
@@ -37,10 +48,10 @@ public class WordsPuzzle {
         System.out.println(res.substring(0, res.length() - 1));
     }
 
-    public static boolean dist(String question, String answer) {
+    public static boolean dist(String riddle, String answer) {
         List<Character> qList = new ArrayList<>();
-        for (int i = 0; i < question.length(); i++) {
-            char c = question.charAt(i);
+        for (int i = 0; i < riddle.length(); i++) {
+            char c = riddle.charAt(i);
             if (!qList.contains(c)) {
                 qList.add(c);
             }
@@ -59,8 +70,8 @@ public class WordsPuzzle {
 
     }
 
-    public static boolean change(String question, String answer) {
-        String[] qStr = question.split("");
+    public static boolean change(String riddle, String answer) {
+        String[] qStr = riddle.split("");
         Arrays.sort(qStr);
         String[] aStr = answer.split("");
         Arrays.sort(aStr);
