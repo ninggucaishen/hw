@@ -9,7 +9,9 @@ public class Board {
 
         Scanner sc = new Scanner(System.in);
 
+        //n块木板，n表示木板数
         int n = sc.nextInt();
+        //长度为m的木料
         int m = sc.nextInt();
 
         int[] nums = new int[n];
