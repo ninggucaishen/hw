@@ -19,7 +19,6 @@ public class Maximum {
             }
         }
 
-        src/main/java/cc/hekafei/oneStar/Maximum.java
         String res = "";
         for (int i = 0; i < len; i++) {
             res += str[i];
