@@ -15,6 +15,7 @@ public class ThreadProority {
         myThread1.start();
         myThread2.start();
         myThread3.start();
+        myThread4.start();
     }
 
 }
