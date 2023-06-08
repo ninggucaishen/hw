@@ -5,8 +5,10 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.SchedulerException;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
 
 public class HelloJob implements Job {
     @Override
@@ -23,9 +25,13 @@ public class HelloJob implements Job {
             e.printStackTrace();
         }
 
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-ss hh:mm:ss");
+        String format = dateFormat.format(date);
+
         System.out.println(tv1 + ":" + tv2);
         System.out.println(jv1 + ":" + jv2);
         System.out.println(sv);
-        System.out.println("hello:"+ LocalDateTime.now());
+        System.out.println("hello:"+ format);
     }
 }
